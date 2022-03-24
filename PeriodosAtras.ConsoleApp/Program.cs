@@ -35,12 +35,20 @@ namespace PeriodosAtras.ConsoleApp
 
             int anos = Math.Abs(Convert.ToInt32(hoje.Year - entrada.Year));
             int meses = Math.Abs(Convert.ToInt32(hoje.Month - entrada.Month));
-            int dias = Math.Abs(Convert.ToInt32(intervalo.Days));
+            int dias = Math.Abs(Convert.ToInt32(intervalo.Days)/anos);
             int horas = Math.Abs(Convert.ToInt32(intervalo.Hours)); 
             int minutos = Math.Abs(Convert.ToInt32(intervalo.Minutes));
             int segundos = Math.Abs(Convert.ToInt32(intervalo.Seconds));
 
-            string resultado = "\n" + anos + " ano(s) " + meses + " mês(es) " + dias + " dia(s) " + horas + " horas " + minutos + " minutos" + " e " + segundos + " segundos";
+            string resultado = "";
+            if (anos > 0 && dias > 364)
+                resultado = anos.ToString() + " anos atrás";
+            else if (meses > 0)
+                resultado = meses.ToString() + " meses atrás";
+            else if (dias > 0)
+                resultado = dias.ToString() + " dias atrás";
+            else if (dias < 1)
+                resultado = horas + " horas, " + minutos + " minutos e " + segundos + " segundos"; 
 
             return resultado;
         }
