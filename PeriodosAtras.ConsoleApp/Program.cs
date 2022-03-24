@@ -28,14 +28,16 @@ namespace PeriodosAtras.ConsoleApp
 
         private static string VerificarIntervaloTempo()
         {
-            TimeSpan intervalo = entrada - hoje;
+            TimeSpan intervalo = hoje - entrada;
 
+            int anos = Math.Abs(Convert.ToInt32(hoje.Year - entrada.Year));
+            int meses = Math.Abs(Convert.ToInt32(hoje.Month - entrada.Month));
             int dias = Math.Abs(Convert.ToInt32(intervalo.TotalDays));
             int horas = Math.Abs(Convert.ToInt32(intervalo.TotalHours));
-            int minutos = Math.Abs(Convert.ToInt32(intervalo.TotalMinutes));
+            int minutos = Math.Abs(Convert.ToInt32(intervalo.TotalMinutes)/60);
             int segundos = Math.Abs(Convert.ToInt32(intervalo.TotalSeconds));
 
-            string resultado = dias + " dia(s) " + horas + " horas " + minutos + " minutos " + " e " + segundos + " segundos";
+            string resultado = "\n" + anos + " ano(s) " + meses + " mês(es) " + dias + " dia(s) " + horas + " horas " + minutos + " minutos" + " e " + segundos + " segundos";
 
             return resultado;
         }
