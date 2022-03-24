@@ -4,7 +4,7 @@ namespace PeriodosAtras.ConsoleApp
 {
     internal class Program
     {
-        static DateTime hoje = DateTime.Today;
+        static DateTime hoje = DateTime.Now;
         static DateTime entrada = new();
 
         public static void Main()
@@ -20,7 +20,10 @@ namespace PeriodosAtras.ConsoleApp
                     break;
                 }
                 else
+                {
+                    Console.WriteLine("Data inválida");
                     continue;
+                }
             }
 
             Console.ReadKey();
@@ -32,10 +35,10 @@ namespace PeriodosAtras.ConsoleApp
 
             int anos = Math.Abs(Convert.ToInt32(hoje.Year - entrada.Year));
             int meses = Math.Abs(Convert.ToInt32(hoje.Month - entrada.Month));
-            int dias = Math.Abs(Convert.ToInt32(intervalo.TotalDays));
-            int horas = Math.Abs(Convert.ToInt32(intervalo.TotalHours)/60);
-            int minutos = Math.Abs(Convert.ToInt32(intervalo.TotalMinutes)/60);
-            int segundos = Math.Abs(Convert.ToInt32(intervalo.TotalSeconds));
+            int dias = Math.Abs(Convert.ToInt32(intervalo.Days));
+            int horas = Math.Abs(Convert.ToInt32(intervalo.Hours)); 
+            int minutos = Math.Abs(Convert.ToInt32(intervalo.Minutes));
+            int segundos = Math.Abs(Convert.ToInt32(intervalo.Seconds));
 
             string resultado = "\n" + anos + " ano(s) " + meses + " mês(es) " + dias + " dia(s) " + horas + " horas " + minutos + " minutos" + " e " + segundos + " segundos";
 
